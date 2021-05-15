@@ -55,8 +55,7 @@ if __name__ == '__main__':
 
     
     rotations = gen_rotations()
-    fig = plt.figure()
-    ax = fig.add_subplot(projection='3d')
+    
     for solution, shape, i in solutions:
         versions = filter_fitting_shapes(get_rotations_of_shape(rotations, shape), solution['size'])
 
@@ -73,5 +72,7 @@ if __name__ == '__main__':
         id = i + 1
         
         for i in range(len(solution['blocks'])):
+            fig = plt.figure()
+            ax = fig.add_subplot(projection='3d')
             ax.voxels(filled <= i, facecolors=colours)
             fig.savefig(f'images/{id}_{i}.png')
